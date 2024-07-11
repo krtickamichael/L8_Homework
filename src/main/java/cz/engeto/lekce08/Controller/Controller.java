@@ -14,35 +14,23 @@ public class Controller {
 
     @GetMapping("romantic")
     public String romantic() throws Exception {
-        String filename = "src/main/java/cz/engeto/lekce08/Controller/resources/romantic.txt";
-        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                return line;
-            }
-        } catch (FileNotFoundException e) {
-            throw new Exception("File " + filename + "not found:" + e.getMessage());
-        }
-        return filename;
+        String filename = "resources/romantic.txt";
+        return readFromFile(filename);
     }
 
     @GetMapping("scifi")
     public String scifi() throws Exception {
-        String filename = "src/main/java/cz/engeto/lekce08/Controller/resources/scifi.txt";
-        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                return line;
-            }
-        } catch (FileNotFoundException e) {
-            throw new Exception("File " + filename + "not found:" + e.getMessage());
-        }
-        return filename;
+        String filename = "resources/scifi.txt";
+        return readFromFile(filename);
     }
 
     @GetMapping("historic")
     public String historic() throws Exception {
-        String filename = "src/main/java/cz/engeto/lekce08/Controller/resources/historic.txt";
+        String filename = "resources/historic.txt";
+        return readFromFile(filename);
+    }
+
+    private static String readFromFile(String filename) throws Exception {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
